@@ -1,0 +1,16 @@
+name: eslint-action
+on: pull_request
+jobs:
+  eslint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Verify git respository
+        uses: actions/checkout@v3
+      - name: Setup node version 12
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12'
+      - name: Install all dependencies
+        run: npm install
+      - name: Run eslint for error
+        run: npx eslint
